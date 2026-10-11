@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDYVERSE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest"
+    href="manifest.json">
+    <meta name="theme-color"
+    content="#090611">
+</head>
+<body>
+    <div class="container">
+        <h1>STUDYVERSE</h1>
+        <p>Your study journey starts here.</p>
+        <button type="button" onclick="welcomeUser()">Get Started</button>
+
+        <div id="dashboard">
+            <h2>My Study Dashboard</h2>
+
+            <p class="menu-item" onclick="openNotes()">My Notes</p>
+            <p class="menu-item" onclick="showSection('plannerSection')">Study Planner</p>
+            <p class="menu-item" onclick="showSection('weeklyPlannerSection')">📅 Weekly Planner</p>
+            <p class="menu-item" onclick="showSection('tasksSection')">Daily Tasks</p>
+            <p class="menu-item" onclick="showSection('goalsSection')">My Goals</p>
+            <p class="menu-item" onclick="showSection('profileSection')">👤 My Profile</p>
+            <p class="menu-item" onclick="showSection('secretGoalsSection')">🔒 Secret Goals</p>
+
+            <div id="notesSection" class="section">
+                <h2>My Notes</h2>
+                <input type="text" id="noteTitle" placeholder="Enter note title">
+                <textarea id="noteContent" placeholder="Write your notes here..." rows="5"></textarea>
+                <button onclick="saveNote()">Save Note</button>
+                <p id="saveMessage"></p>
+                <div id="savedNotes"></div>
+            </div>
+
+            <div id="plannerSection" class="section">
+                <h2>Study Planner</h2>
+                <input type="text" id="studyPlan" placeholder="What will you study?">
+                <button onclick="savePlan()">Save Plan</button>
+                <p id="planMessage"></p>
+            </div>
+
+            <div id="weeklyPlannerSection" class="section">
+                <h2>📅 Weekly Study Planner</h2>
+                <p>Plan your studies for all seven days!</p>
+
+                <div class="weekly-day">
+                    <label for="day1">Monday</label>
+                    <textarea id="day1" rows="3" placeholder="Monday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day2">Tuesday</label>
+                    <textarea id="day2" rows="3" placeholder="Tuesday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day3">Wednesday</label>
+                    <textarea id="day3" rows="3" placeholder="Wednesday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day4">Thursday</label>
+                    <textarea id="day4" rows="3" placeholder="Thursday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day5">Friday</label>
+                    <textarea id="day5" rows="3" placeholder="Friday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day6">Saturday</label>
+                    <textarea id="day6" rows="3" placeholder="Saturday study plan..."></textarea>
+                </div>
+                <div class="weekly-day">
+                    <label for="day7">Sunday</label>
+                    <textarea id="day7" rows="3" placeholder="Sunday study plan..."></textarea>
+                </div>
+
+                <button onclick="saveWeeklyPlan()">Save Weekly Plan</button>
+                <p id="weeklyPlanMessage"></p>
+            </div>
+
+            <div id="tasksSection" class="section">
+                <h2>Daily Tasks</h2>
+                <input type="text" id="taskInput" placeholder="Enter your task">
+                <button onclick="addTask()">Add Task</button>
+                <ul id="taskList"></ul>
+            </div>
+
+            <div id="goalsSection" class="section">
+                <h2>My Goals</h2>
+                <input type="text" id="goalInput" placeholder="Enter your goal">
+                <button onclick="saveGoal()">Save Goal</button>
+                <p id="goalMessage"></p>
+            </div>
+
+            <div id="profileSection" class="section">
+                <h2>👤 My Profile</h2>
+                <div class="profile-card">
+                    <img id="profilePreview"
+                         src="https://placehold.co/120x120/291a38/ffffff?text=Photo"
+                         alt="Profile Photo">
+
+                    <label for="profilePhoto">Choose Profile Photo</label>
+                    <input type="file" id="profilePhoto" accept="image/*"
+                           onchange="previewProfilePhoto(event)">
+
+                    <label for="profileName">Your Name</label>
+                    <input type="text" id="profileName" placeholder="Enter your name">
+
+                    <label for="profileClass">Your Class</label>
+                    <input type="text" id="profileClass" placeholder="Enter your class">
+
+                    <button onclick="saveProfile()">Save Profile</button>
+                    <p id="profileMessage"></p>
+                </div>
+            </div>
+
+            <div id="secretGoalsSection" class="section">
+                <h2>🔒 Secret Goals</h2>
+                <p>This PIN is a basic lock, not strong security.</p>
+
+                <div id="secretSetup">
+                    <label for="secretPin">Create a 4–8 digit PIN</label>
+                    <input type="password" id="secretPin" inputmode="numeric"
+                           maxlength="8" placeholder="Create PIN">
+                    <button onclick="unlockSecretGoals(true)">Create PIN</button>
+                </div>
+
+                <div id="secretLocked" style="display:none">
+                    <label for="secretUnlockPin">Enter your PIN</label>
+                    <input type="password" id="secretUnlockPin" inputmode="numeric"
+                           maxlength="8" placeholder="Enter PIN">
+                    <button onclick="unlockSecretGoals(false)">Unlock</button>
+                </div>
+
+                <div id="secretContent" style="display:none">
+                    <label for="secretGoalInput">Your private goals</label>
+                    <textarea id="secretGoalInput" rows="5"
+                              placeholder="Write your goals here..."></textarea>
+                    <button onclick="saveSecretGoals()">Save Secret Goals</button>
+                    <button onclick="lockSecretGoals()">Lock</button>
+                </div>
+                <p id="secretMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
